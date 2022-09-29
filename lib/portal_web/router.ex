@@ -18,6 +18,13 @@ defmodule PortalWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/instruments", InstrumentLive.Index, :index
+    live "/instruments/new", InstrumentLive.Index, :new
+    live "/instruments/:id/edit", InstrumentLive.Index, :edit
+
+    live "/instruments/:id", InstrumentLive.Show, :show
+    live "/instruments/:id/show/edit", InstrumentLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

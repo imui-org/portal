@@ -1,0 +1,36 @@
+<h1>Show Instrument</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.instrument_show_path(@socket, :show, @instrument)}>
+    <.live_component
+      module={PortalWeb.InstrumentLive.FormComponent}
+      id={@instrument.id}
+      title={@page_title}
+      action={@live_action}
+      instrument={@instrument}
+      return_to={Routes.instrument_show_path(@socket, :show, @instrument)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @instrument.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @instrument.description %>
+  </li>
+
+  <li>
+    <strong>Available:</strong>
+    <%= @instrument.available %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.instrument_show_path(@socket, :edit, @instrument), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.instrument_index_path(@socket, :index) %></span>
