@@ -1,4 +1,5 @@
 /.direnv/
+/.nix-mix/
 # The directory Mix will write compiled artifacts to.
 /_build/
 
